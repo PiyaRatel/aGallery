@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riya Patel — Product Designer & Creative Technologist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============ RESET / BASE ============ */
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+  body {
+    margin: 0;
+    background: #f3f3f6;
+    color: #16151a;
+    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: #dcd9fb; color: #16151a; }
+  a { -webkit-tap-highlight-color: transparent; }
+
+  @keyframes hpFloatA { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-14px) } }
+  @keyframes hpFloatB { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-18px) } }
+  @keyframes hpFloatC { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-11px) } }
+  @keyframes hpMesh { 0%{ transform:translate(-3%,-2%) scale(1) } 50%{ transform:translate(3%,3%) scale(1.08) } 100%{ transform:translate(-3%,-2%) scale(1) } }
+
+  /* ============ HEADER ============ */
+  .rp-header {
+    position: sticky; top: 0; z-index: 60;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 20px 40px;
+    background: rgba(243,243,246,0.72);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(14px) saturate(160%);
+    border-bottom: 1px solid rgba(0,0,0,0);
+    transition: padding .4s cubic-bezier(.22,.61,.36,1), background .4s ease, border-color .4s ease;
+  }
+  .rp-header.is-scrolled {
+    padding: 12px 40px;
+    background: rgba(243,243,246,0.86);
+    border-bottom-color: rgba(0,0,0,0.09);
+  }
+  .rp-logo {
+    font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 25px;
+    letter-spacing: -.02em; text-decoration: none; white-space: nowrap;
+    background: linear-gradient(100deg,#4f46e5 10%,#8b5cf6 90%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: #4f46e5;
+  }
+  .rp-nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+  .rp-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    font-size: 14px; font-weight: 500; color: #3c3b45; text-decoration: none;
+    padding: 0 16px; height: 38px; border-radius: 10px;
+    background: rgba(255,255,255,0.55);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.7);
+    box-shadow: 0 4px 14px -7px rgba(40,30,90,.22);
+    line-height: 1;
+    transition: transform .25s cubic-bezier(.22,.61,.36,1), background .25s, box-shadow .25s, color .25s;
+  }
+  .rp-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.92); color: #16151a; box-shadow: 0 14px 28px -10px rgba(40,30,90,.32); }
+  .rp-ext { font-size: 13px; display: inline-block; transition: transform .28s cubic-bezier(.22,.61,.36,1); }
+  .rp-btn:hover .rp-ext { transform: translate(3px,-3px); }
+  .rp-btn--cta {
+    font-weight: 600; color: #fff; padding: 0 20px; height: 40px;
+    background: linear-gradient(135deg,#4f46e5,#8b5cf6);
+    border: 1px solid rgba(255,255,255,.25);
+    box-shadow: 0 8px 22px -10px rgba(79,70,229,.6), inset 0 1px 0 rgba(255,255,255,.35);
+  }
+  .rp-btn--cta:hover { color: #fff; transform: translateY(-2px); filter: brightness(1.07); background: linear-gradient(135deg,#4f46e5,#8b5cf6); box-shadow: 0 18px 34px -10px rgba(79,70,229,.7), inset 0 1px 0 rgba(255,255,255,.4); }
+
+  /* ============ LAYOUT ============ */
+  .rp-wrap { max-width: 1120px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+
+  /* ============ HERO ============ */
+  .rp-hero { position: relative; padding-top: clamp(48px,9vw,104px); padding-bottom: clamp(56px,9vw,96px); }
+  .rp-hero__glow {
+    position: absolute; top: -40px; right: -80px; width: 640px; height: 560px; max-width: 90vw;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(139,92,246,.20), rgba(255,57,216,.10) 55%, transparent 78%);
+    filter: blur(10px); z-index: 0; pointer-events: none; animation: hpMesh 18s ease-in-out infinite;
+  }
+  .rp-hero__row { position: relative; z-index: 1; display: flex; gap: clamp(32px,5vw,72px); align-items: center; flex-wrap: wrap; }
+  .rp-hero__text { flex: 1 1 460px; min-width: 280px; }
+  .rp-hello { font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; font-size: clamp(22px,3vw,30px); color: #6f6c95; margin-bottom: 4px; }
+  .rp-hello span { font-style: normal; }
+  .rp-h1 { font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(46px,8.2vw,96px); line-height: 1.0; letter-spacing: -.025em; margin: 0; color: #16151a; }
+  .rp-h1 .grad { background: linear-gradient(100deg,#4f46e5 5%,#8b5cf6 55%,#ff39d8 110%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rp-lede { font-size: clamp(17px,1.6vw,20px); line-height: 1.62; color: #46454e; max-width: 54ch; margin: 28px 0 0; text-wrap: pretty; }
+  .rp-lede strong { color: #4f46e5; font-weight: 600; }
+
+  .rp-hero__media { flex: 1 1 380px; min-width: 280px; display: flex; justify-content: center; }
+  .rp-portrait-stage { position: relative; width: min(420px,82vw); }
+  .rp-portrait { display: block; width: 100%; aspect-ratio: 5/6; box-shadow: 0 40px 80px -34px rgba(40,30,90,.45); }
+  .rp-chip {
+    position: absolute; z-index: 3; border-radius: 16px;
+    background: rgba(255,255,255,.8);
+    -webkit-backdrop-filter: blur(12px) saturate(160%); backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid rgba(255,255,255,.7);
+    box-shadow: 0 18px 40px -18px rgba(40,30,90,.4);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rp-chip--a { top: 8%; left: -40px; width: 54px; height: 54px; border-radius: 15px; animation: hpFloatA 7s ease-in-out infinite; }
+  .rp-chip--a i { width: 26px; height: 26px; border-radius: 8px; background: conic-gradient(from 30deg,#ff39d8,#7b5cff,#3b6cff,#ff39d8); display: block; }
+  .rp-chip--b { top: -22px; right: -30px; width: 58px; height: 58px; font-size: 26px; animation: hpFloatB 8.5s ease-in-out infinite; }
+  .rp-chip--c { bottom: -18px; left: 18px; width: 62px; height: 62px; font-size: 28px; animation: hpFloatC 6.4s ease-in-out infinite; }
+
+  /* ============ NOW ============ */
+  .rp-now { background: #eef0fb; padding: clamp(64px,9vw,112px) 0; }
+  .rp-video-frame { margin: 0 0 48px; border-radius: 18px; overflow: hidden; background: #0c0c10; border: 1px solid rgba(255,255,255,.06); box-shadow: 0 44px 90px -44px rgba(28,24,70,.55); }
+  .rp-video-bar { display: flex; align-items: center; gap: 10px; padding: 13px 18px; background: #141318; border-bottom: 1px solid rgba(255,255,255,.06); }
+  .rp-video-mark { width: 20px; height: 20px; border-radius: 6px; background: conic-gradient(from 30deg,#ff39d8,#7b5cff,#3b6cff,#ff39d8); }
+  .rp-dots { margin-left: auto; display: flex; gap: 7px; }
+  .rp-dots i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+  .rp-video { display: block; width: 100%; height: auto; background: #0c0c10; }
+
+  .rp-now__statement { font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px,3.6vw,46px); line-height: 1.2; letter-spacing: -.014em; margin: 0; max-width: 24ch; color: #16151a; }
+  .rp-now__statement strong { font-weight: 500; color: #4f46e5; }
+
+  .rp-timeline { position: relative; margin-top: 56px; }
+  .rp-timeline__line { position: absolute; top: 6px; left: 14%; right: 14%; height: 2px; background: linear-gradient(90deg,#4f46e5,#8b5cf6,#ff39d8); opacity: .5; }
+  .rp-timeline__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+  .rp-tl-dot { width: 14px; height: 14px; border-radius: 50%; margin: 0 auto 26px; box-shadow: 0 0 0 5px #eef0fb; }
+  .rp-tl-card { background: #fcfcfe; border: 1px solid rgba(0,0,0,.08); border-radius: 14px; padding: 22px; height: 100%; transition: transform .3s, box-shadow .3s; }
+  .rp-tl-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -22px rgba(40,30,90,.3); }
+  .rp-tl-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .04em; color: #4f46e5; font-weight: 500; margin-bottom: 10px; }
+  .rp-tl-team { font-family: 'Newsreader', serif; font-size: 20px; font-weight: 500; margin-bottom: 8px; color: #16151a; }
+  .rp-tl-desc { margin: 0; font-size: 14.5px; line-height: 1.55; color: #7e7e7e; }
+
+  /* ============ WORK / CASE STUDIES ============ */
+  .rp-work { padding: clamp(64px,9vw,112px) 0; }
+  .rp-cases { display: flex; flex-direction: column; gap: clamp(56px,9vw,120px); }
+  .rp-case__row { display: flex; gap: clamp(32px,5vw,72px); align-items: center; flex-wrap: wrap; }
+  .rp-case__row.is-reverse { flex-direction: row-reverse; }
+  .rp-case__media { flex: 1 1 380px; min-width: 280px; }
+  .rp-case__frame { border-radius: 18px; overflow: hidden; box-shadow: 0 30px 64px -34px rgba(40,30,90,.42); transition: transform .4s cubic-bezier(.22,.61,.36,1), box-shadow .4s; }
+  .rp-case__frame:hover { transform: translateY(-6px); box-shadow: 0 44px 80px -38px rgba(40,30,90,.5); }
+  .rp-case__img { display: block; width: 100%; aspect-ratio: 4/3; }
+  .rp-case__body { flex: 1 1 360px; min-width: 280px; }
+  .rp-case__eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #9b98a8; margin-bottom: 16px; }
+  .rp-case__title { font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px,3.4vw,42px); line-height: 1.08; letter-spacing: -.018em; margin: 0 0 18px; color: #16151a; }
+  .rp-case__meta { font-size: 14.5px; color: #7e7e7e; margin: 0 0 6px; }
+  .rp-case__meta span + span { margin-left: 28px; }
+  .rp-case__desc { font-size: 16px; line-height: 1.6; color: #7e7e7e; margin: 0 0 26px; max-width: 42ch; text-wrap: pretty; }
+  .rp-case__cta {
+    display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600; color: #fff; text-decoration: none;
+    padding: 12px 22px; border-radius: 11px;
+    background: linear-gradient(135deg,#4f46e5,#8b5cf6); border: 1px solid rgba(255,255,255,.25);
+    box-shadow: 0 10px 26px -12px rgba(79,70,229,.6);
+    transition: gap .25s, transform .25s, filter .25s, box-shadow .25s;
+  }
+  .rp-case__cta:hover { gap: 14px; transform: translateY(-2px); filter: brightness(1.07); box-shadow: 0 18px 34px -14px rgba(79,70,229,.7); }
+
+  /* ============ FOOTER ============ */
+  .rp-footer { background: #ececf2; border-top: 1px solid rgba(0,0,0,.08); padding: 40px 0; }
+  .rp-footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .rp-footer__name { font-family: 'Newsreader', serif; font-weight: 500; font-size: 18px; letter-spacing: -.01em; color: #4b4b4b; text-decoration: none; transition: color .25s; }
+  .rp-footer__name:hover { color: #4f46e5; }
+  .rp-footer__nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+  .rp-fbtn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: #3c3b45; text-decoration: none; padding: 0 16px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,.07); transition: transform .25s cubic-bezier(.22,.61,.36,1), background .25s, box-shadow .25s; }
+  .rp-fbtn:hover { transform: translateY(-2px); background: #fff; box-shadow: 0 12px 24px -12px rgba(40,30,90,.3); }
+  .rp-fbtn--cta { font-weight: 600; color: #fff; padding: 0 20px; background: linear-gradient(135deg,#4f46e5,#8b5cf6); border: 1px solid rgba(255,255,255,.25); box-shadow: 0 8px 22px -10px rgba(79,70,229,.6); }
+  .rp-fbtn--cta:hover { color: #fff; transform: translateY(-2px); filter: brightness(1.07); background: linear-gradient(135deg,#4f46e5,#8b5cf6); }
+
+  /* ============ SCROLL REVEAL ============ */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .85s cubic-bezier(.22,.61,.36,1), transform .85s cubic-bezier(.22,.61,.36,1); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  /* ============ RESPONSIVE — TABLET ============ */
+  @media (max-width: 900px) {
+    .rp-timeline__grid { grid-template-columns: 1fr; gap: 16px; }
+    .rp-timeline__line { display: none; }
+    .rp-tl-dot { display: none; }
+    .rp-case__row, .rp-case__row.is-reverse { flex-direction: column; }
+    .rp-case__media, .rp-case__body { flex: 1 1 100%; width: 100%; }
+  }
+
+  /* ============ RESPONSIVE — MOBILE ============ */
+  @media (max-width: 600px) {
+    .rp-wrap { padding-left: 20px; padding-right: 20px; }
+    .rp-header { padding: 14px 18px; gap: 12px; }
+    .rp-header.is-scrolled { padding: 10px 18px; }
+    .rp-logo { font-size: 22px; }
+    .rp-nav { gap: 8px; }
+    .rp-btn { height: 34px; padding: 0 13px; font-size: 14px; }
+    .rp-btn--cta { height: 36px; padding: 0 15px; }
+
+    .rp-hero__row { flex-direction: column; align-items: flex-start; }
+    .rp-hero__media { width: 100%; justify-content: center; margin-top: 8px; }
+    .rp-portrait-stage { width: min(360px, 86vw); }
+    .rp-chip--a { left: -10px; width: 46px; height: 46px; }
+    .rp-chip--b { right: -8px; width: 50px; height: 50px; font-size: 22px; }
+    .rp-chip--c { left: 8px; width: 52px; height: 52px; font-size: 24px; }
+    .rp-hero__glow { right: -120px; }
+
+    .rp-video-frame { border-radius: 14px; margin-bottom: 36px; }
+    .rp-now__statement { max-width: none; }
+
+    .rp-footer__inner { flex-direction: column; align-items: flex-start; }
+    .rp-footer__nav { justify-content: flex-start; }
+    .rp-case__meta span + span { display: inline-block; margin-left: 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rp-chip { animation: none !important; }
+    .rp-hero__glow { animation: none !important; }
+    .reveal { transition: none; }
+  }
+</style>
+</head>
+<body id="top">
+
+  <!-- header removed -->
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="rp-hero rp-wrap">
+      <div class="rp-hero__glow"></div>
+      <div class="rp-hero__row">
+        <div class="rp-hero__text">
+          <div class="rp-hello">Hi&nbsp;<span>👋</span>,</div>
+          <h1 class="rp-h1">I am <span class="grad">Riya&nbsp;Patel</span></h1>
+          <p class="rp-lede">A <strong>Product Designer</strong> and a <strong>Creative Technologist</strong> with 5 years of experience working on AI simulation software for testing autonomous driving vehicles at <strong>Five AI (a Bosch company)</strong>, and an alumna of the <strong>Royal College of Art</strong>.</p>
+        </div>
+        <div class="rp-hero__media">
+          <div class="rp-portrait-stage">
+            <image-slot id="rp-portrait" class="rp-portrait" data-parallax="0.03" shape="rounded" radius="26" placeholder="Drop your portrait"></image-slot>
+            <div class="rp-chip rp-chip--a" data-parallax="0.11"><i></i></div>
+            <div class="rp-chip rp-chip--b" data-parallax="0.16">🪴</div>
+            <div class="rp-chip rp-chip--c" data-parallax="0.2">👟</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NOW ============ -->
+    <section class="rp-now" id="now">
+      <div class="rp-wrap">
+        <div class="rp-video-frame reveal">
+          <div class="rp-video-bar">
+            <span class="rp-video-mark"></span>
+            <span class="rp-dots"><i style="background:#ff5a52;"></i><i style="background:#f5b73b;"></i><i style="background:#25c26e;"></i></span>
+          </div>
+          <video class="rp-video" autoplay loop muted playsinline>
+            <source src="https://files.cargocollective.com/c3394372/61125c305154af0d8a4bc2c3_five-platform-no-ident-v2-transcode.webm" type="video/webm">
+          </video>
+        </div>
+
+        <div class="reveal">
+          <h2 class="rp-now__statement">Currently, I am based in London, working with <strong>Five AI</strong> as a part of the Automated Driving Alliance – a strategic partnership between <strong>Bosch Mobility</strong> and <strong>Volkswagen Group's CARIAD.</strong></h2>
+        </div>
+
+        <div class="rp-timeline reveal">
+          <div class="rp-timeline__line"></div>
+          <div class="rp-timeline__grid">
+            <div>
+              <div class="rp-tl-dot" style="background:#4f46e5;"></div>
+              <div class="rp-tl-card">
+                <div class="rp-tl-date">🗓️ March 2024 – present</div>
+                <div class="rp-tl-team">Team: Scenario catalogue</div>
+                <p class="rp-tl-desc">Design the service responsible for coordinating simulation tests.</p>
+              </div>
+            </div>
+            <div>
+              <div class="rp-tl-dot" style="background:#8b5cf6;"></div>
+              <div class="rp-tl-card">
+                <div class="rp-tl-date">🗓️ April 2023 – March 2023</div>
+                <div class="rp-tl-team">Team: Real-world triage and assessment</div>
+                <p class="rp-tl-desc">Enabled improved analysis with rule evaluation and automatic event detection.</p>
+              </div>
+            </div>
+            <div>
+              <div class="rp-tl-dot" style="background:#ff39d8;"></div>
+              <div class="rp-tl-card">
+                <div class="rp-tl-date">🗓️ October 2021 – April 2023</div>
+                <div class="rp-tl-team">Team: Scenario Editor</div>
+                <p class="rp-tl-desc">Designed an intuitive user interface for test engineers to create complex driving scenarios in a 3D rendered world.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK / CASE STUDIES ============ -->
+    <section class="rp-work rp-wrap" id="work">
+      <div class="rp-cases">
+
+        <article class="rp-case reveal">
+          <div class="rp-case__row">
+            <div class="rp-case__media">
+              <div class="rp-case__frame"><image-slot id="rp-case-1" class="rp-case__img" shape="rounded" radius="18" placeholder="Drop case 1 image"></image-slot></div>
+            </div>
+            <div class="rp-case__body">
+              <div class="rp-case__eyebrow">Case Study 1</div>
+              <h3 class="rp-case__title">Scaling AI simulation through traceable calculation logic</h3>
+              <p class="rp-case__meta"><span>🗓️ 2023 - 2024 September</span><span>📍London</span></p>
+              <p class="rp-case__desc">Design system to handle dynamic variables in scenario simulation for AI testing.</p>
+              <a href="Espressions-Calculator-in-the-scenario-editor" rel="history" class="rp-case__cta">View Project<span>→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="rp-case reveal">
+          <div class="rp-case__row is-reverse">
+            <div class="rp-case__media">
+              <div class="rp-case__frame"><image-slot id="rp-case-2" class="rp-case__img" shape="rounded" radius="18" placeholder="Drop case 2 image"></image-slot></div>
+            </div>
+            <div class="rp-case__body">
+              <div class="rp-case__eyebrow">Case Study 2</div>
+              <h3 class="rp-case__title">Autonomous Vehicle Simulation Platform</h3>
+              <p class="rp-case__meta"><span>🗓️ 2022 Oct - 2024 March</span><span>📍London</span></p>
+              <p class="rp-case__desc">AI-driven simulation tools for autonomous vehicle scenario testing.</p>
+              <a href="Autonomous-Vehicle-Simulation-Platform" class="rp-case__cta">View Project<span>→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="rp-case reveal">
+          <div class="rp-case__row">
+            <div class="rp-case__media">
+              <div class="rp-case__frame"><image-slot id="rp-case-3" class="rp-case__img" shape="rounded" radius="18" placeholder="Drop case 3 image"></image-slot></div>
+            </div>
+            <div class="rp-case__body">
+              <div class="rp-case__eyebrow">Case Study 3</div>
+              <h3 class="rp-case__title">Scenario simulation</h3>
+              <p class="rp-case__meta"><span>🗓️ 2021 June</span><span>📍London</span></p>
+              <p class="rp-case__desc">Product to create a driving scenario simulation.</p>
+              <a href="Scenario-simulation" class="rp-case__cta">View Project<span>→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="rp-case reveal">
+          <div class="rp-case__row is-reverse">
+            <div class="rp-case__media">
+              <div class="rp-case__frame"><image-slot id="rp-case-4" class="rp-case__img" shape="rounded" radius="18" placeholder="Drop case 4 image"></image-slot></div>
+            </div>
+            <div class="rp-case__body">
+              <div class="rp-case__eyebrow">Case Study 4</div>
+              <h3 class="rp-case__title">MADD Final Show, 2021</h3>
+              <p class="rp-case__meta"><span>🗓️ 2021 Jan - 2021 March</span><span>📍London</span></p>
+              <p class="rp-case__desc">Designing digital navigation to exhibit multidisciplinary work online.</p>
+              <a href="Virtual-Exhibition" class="rp-case__cta">View Project<span>→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="rp-case reveal">
+          <div class="rp-case__row">
+            <div class="rp-case__media">
+              <div class="rp-case__frame"><image-slot id="rp-case-5" class="rp-case__img" shape="rounded" radius="18" placeholder="Drop case 5 image"></image-slot></div>
+            </div>
+            <div class="rp-case__body">
+              <div class="rp-case__eyebrow">Case Study 5</div>
+              <h3 class="rp-case__title">Internshala</h3>
+              <p class="rp-case__meta"><span>🗓️ 2018 April - 2018 September</span><span>📍London</span></p>
+              <p class="rp-case__desc">Designed campaign screen for an internship platform, Internshala.</p>
+              <a href="Internshala" class="rp-case__cta">View Project<span>→</span></a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- footer removed -->
+
+  <script src="image-slot.js"></script>
+  <script>
+    (function () {
+      // Header shrink on scroll (guarded — header may be removed)
+      var header = document.getElementById('rpHeader');
+      function onScroll() {
+        if (!header) return;
+        if (window.scrollY > 24) header.classList.add('is-scrolled');
+        else header.classList.remove('is-scrolled');
+      }
+      if (header) {
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+
+      // Scroll reveal
+      var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        reveals.forEach(function (el) { io.observe(el); });
+        setTimeout(function () { reveals.forEach(function (el) { el.classList.add('is-in'); }); }, 2500);
+      } else {
+        reveals.forEach(function (el) { el.classList.add('is-in'); });
+      }
+
+      // Pointer parallax (desktop / pointer devices only)
+      var chips = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+      var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (canHover) {
+        window.addEventListener('mousemove', function (e) {
+          var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+          var dx = (e.clientX - cx) / cx, dy = (e.clientY - cy) / cy;
+          chips.forEach(function (el) {
+            var f = parseFloat(el.getAttribute('data-parallax')) || 0;
+            el.style.transform = 'translate(' + (-dx * f * 60).toFixed(1) + 'px,' + (-dy * f * 60).toFixed(1) + 'px)';
+          });
+        }, { passive: true });
+      }
+    })();
+  </script>
+</body>
+</html>
